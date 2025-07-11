@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | SecureDropBox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 text-gray-800">
+    <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold text-blue-600">🔒 SecureDropBox</h1>
+      <div class="space-x-6">
+        <a href="/" class="text-gray-700 hover:text-blue-600">Home</a>
+        <a href="/about" class="text-gray-700 hover:text-blue-600">About Us</a>
+        <a href="/contact" class="text-blue-600 font-semibold">Contact</a>
+        <a href="/learn" class="text-gray-700 hover:text-blue-600"
+          >Learn More</a
+        >
+        <a
+          href="/user_login"
+          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >Get Started</a
+        >
+      </div>
+    </nav>
+
+    <section class="max-w-3xl mx-auto py-16 px-6">
+      <h2 class="text-4xl font-bold mb-6 text-center text-blue-600">
+        Get in Touch
+      </h2>
+      <p class="text-center text-gray-600 mb-10">
+        Have a question or need help? We'd love to hear from you.
+      </p>
+
+      <form action="https://api.web3forms.com/submit" method="POST" class="bg-white shadow-md rounded-lg p-8 space-y-6">
+        <input type="hidden" name="access_key" value="623c6599-8118-46e9-9c37-c01a724e9529">
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-600 mb-1"
+            >Your Name</label
+          >
+          <input
+            type="text"
+            name="first_name"
+            placeholder="John Doe"
+            class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-600 mb-1"
+            >Email Address</label
+          >
+          <input
+            type="email"
+            placeholder="you@example.com"
+            class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-600 mb-1"
+            >Your Message</label
+          >
+          <textarea
+            rows="4"
+            placeholder="Type your message here..."
+            class="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+        >
+          Send Message
+        </button>
+      </form>
+    </section>
+  </body>
+</html>

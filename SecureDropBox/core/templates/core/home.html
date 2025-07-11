@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Home | SecureDropBox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background-image: url("https://images.unsplash.com/photo-1603791440384-56cd371ee9a7");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      .animate-text {
+        animation: fadeInUp 1.5s ease-in-out forwards;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="text-gray-800 font-sans">
+    <!-- Navbar -->
+    <nav
+      class="bg-white bg-opacity-80 backdrop-blur-md px-6 py-4 flex justify-between items-center shadow-md"
+    >
+      <h1 class="text-2xl font-bold text-blue-600">🔒 SecureDropBox</h1>
+      <div class="space-x-6">
+        <a href="/" class="text-gray-700 hover:text-blue-600 font-medium"
+          >Home</a
+        >
+        <a
+          href="{% url 'about' %}"
+          class="text-gray-700 hover:text-blue-600 font-medium"
+          >About Us</a
+        >
+        <a
+          href="{% url 'contact' %}"
+          class="text-gray-700 hover:text-blue-600 font-medium"
+          >Contact</a
+        >
+        <a
+          href="{% url 'learn' %}"
+          class="text-gray-700 hover:text-blue-600 font-medium"
+          >Learn More</a
+        >
+        <a
+          href="{% url 'user_login' %}"
+          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >Get Started</a
+        >
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="h-[90vh] flex flex-col justify-center items-center text-center px-6"
+    >
+      <h2
+        class="text-5xl sm:text-6xl font-extrabold text-white drop-shadow-lg animate-text"
+      >
+        <span class="text-blue-500">Upload</span>,
+        <span class="text-blue-400">Save</span> &
+        <span class="text-white">Share</span> Files Securely
+      </h2>
+      <p class="mt-6 text-lg sm:text-xl text-gray-200 max-w-2xl animate-text">
+        Upload your files into our secure cloud. Protect them with
+        encryption and share safely via password-protected links.
+      </p>
+      <div class="mt-8 flex space-x-4 animate-text">
+        <a
+          href="{% url 'user_login' %}"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded text-lg"
+          >Get Started</a
+        >
+        <a
+          href="{% url 'learn' %}"
+          class="bg-white hover:bg-gray-100 text-blue-600 border px-6 py-3 rounded text-lg"
+          >Learn More</a
+        >
+      </div>
+    </section>
+  </body>
+</html>

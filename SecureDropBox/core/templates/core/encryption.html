@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <link href="{% static 'core/styles.css' %}" rel="stylesheet" />
+    <!-- In <head> -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Before </body> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+      .modal#statusSuccessModal .modal-content,
+      .modal#statusErrorsModal .modal-content {
+        border-radius: 30px;
+      }
+      .modal#statusSuccessModal .modal-content svg,
+      .modal#statusErrorsModal .modal-content svg {
+        width: 100px;
+        display: block;
+        margin: 0 auto;
+      }
+      .modal#statusSuccessModal .modal-content .path,
+      .modal#statusErrorsModal .modal-content .path {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 0;
+      }
+      .modal#statusSuccessModal .modal-content .path.circle,
+      .modal#statusErrorsModal .modal-content .path.circle {
+        -webkit-animation: dash 0.9s ease-in-out;
+        animation: dash 0.9s ease-in-out;
+      }
+      .modal#statusSuccessModal .modal-content .path.line,
+      .modal#statusErrorsModal .modal-content .path.line {
+        stroke-dashoffset: 1000;
+        -webkit-animation: dash 0.95s 0.35s ease-in-out forwards;
+        animation: dash 0.95s 0.35s ease-in-out forwards;
+      }
+      .modal#statusSuccessModal .modal-content .path.check,
+      .modal#statusErrorsModal .modal-content .path.check {
+        stroke-dashoffset: -100;
+        -webkit-animation: dash-check 0.95s 0.35s ease-in-out forwards;
+        animation: dash-check 0.95s 0.35s ease-in-out forwards;
+      }
+
+      @-webkit-keyframes dash {
+        0% {
+          stroke-dashoffset: 1000;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+      @keyframes dash {
+        0% {
+          stroke-dashoffset: 1000;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+      @-webkit-keyframes dash {
+        0% {
+          stroke-dashoffset: 1000;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+      @keyframes dash {
+        0% {
+          stroke-dashoffset: 1000;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+      @-webkit-keyframes dash-check {
+        0% {
+          stroke-dashoffset: -100;
+        }
+        100% {
+          stroke-dashoffset: 900;
+        }
+      }
+      @keyframes dash-check {
+        0% {
+          stroke-dashoffset: -100;
+        }
+        100% {
+          stroke-dashoffset: 900;
+        }
+      }
+      .box00 {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+      ul.horizontal {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding-left: 0;
+        gap: 10px;
+      }
+
+      ul.horizontal li {
+        flex: 0 0 150px;
+        background: #fff;
+        padding: 8px;
+        text-align: center;
+        border-radius: 4px;
+      }
+      /* Style file inputs */
+      .file-input {
+        width: 100%;
+        padding: 8px;
+        border: 2px dashed #ccc;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: border-color 0.3s ease;
+        font-family: Arial, sans-serif;
+      }
+
+      .file-input:hover,
+      .file-input:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      /* Optional: Style labels */
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 6px;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Wrap fields for spacing */
+      .form-group {
+        margin-bottom: 18px;
+      }
+    </style>
+    <title>Encryption | SecureDropBox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🔒</span>
+        <h1 class="text-xl font-bold text-blue-600">SecureDropBox</h1>
+      </div>
+      <ul class="horizontal">
+        <li>
+          <a class="text-black" href="{% url 'dashboard' %}">📊 Dashboard</a>
+        </li>
+        <li>
+          <a class="nav-link text-black" href="{% url 'generate_keys' %}"
+            >🔑 Key Generator</a
+          >
+        </li>
+        <li>
+          <a class="nav-link text-black" href="{% url 'encryption' %}"
+            >🔒 Encryption</a
+          >
+        </li>
+        <li>
+          <a class="nav-link text-black" href="{% url 'decryption' %}"
+            >🔓 Decryption</a
+          >
+        </li>
+        <!-- Add more links as needed -->
+      </ul>
+      <div class="relative group">
+        <img
+          src="https://api.dicebear.com/7.x/initials/svg?seed={{ user.username }}"
+          alt="Profile"
+          class="w-10 h-10 rounded-full cursor-pointer"
+        />
+        <h2 class="font-light mb-2 text-gray-800">
+          Welcome,
+          <span class="text-blue-600 font-bold">{{ user.username }}</span>
+        </h2>
+        <div
+          class="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg hidden group-hover:block"
+        >
+          <a
+            href="{% url 'settings' %}"
+            class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+            >Settings</a
+          >
+           <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+             <button type="submit" class="text-start block px-4 py-2 text-gray-700 hover:bg-gray-100 w-100">Logout</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="max-w-5xl mx-auto mt-10 bg-white p-8 rounded shadow-lg">
+      {% if messages %}
+       {% for message in messages %} 
+      {% if message.tags == 'error' %}
+      <div class="alert alert-danger">
+        {% endif %}
+         {% if message.tags == 'success' %}
+        <div class="alert alert-success">
+          {% endif %} 
+          {{message}}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+        {% endfor %}
+         {% endif %}
+        <div class="container">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %} 
+            {{ form.as_p }}
+
+            <button
+              class="btn btn-success"
+              style="margin: 10px 0"
+              type="submit"
+            >
+              Encrypt File
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

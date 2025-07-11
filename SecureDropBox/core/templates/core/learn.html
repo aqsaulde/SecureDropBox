@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn More | SecureDropBox</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <nav class="bg-white shadow-md px-6 py-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold text-blue-600">🔒 SecureDropBox</h1>
+    <div class="space-x-6">
+      <a href="/" class="text-gray-700 hover:text-blue-600">Home</a>
+      <a href="/about" class="text-gray-700 hover:text-blue-600">About Us</a>
+      <a href="/contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+      <a href="/learn" class="text-blue-600 font-semibold">Learn More</a>
+      <a href="{% url 'user_login' %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Get Started</a>
+    </div>
+  </nav>
+
+  <section class="max-w-5xl mx-auto py-16 px-6">
+    <h2 class="text-4xl font-bold mb-6 text-center text-blue-600">How SecureDropBox Works</h2>
+    <p class="text-center text-gray-600 mb-10">
+      Share confidential files safely using strong encryption and link-based sharing.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-8 text-center">
+      <div class="bg-white p-6 shadow-lg rounded-lg">
+        <div class="text-4xl mb-2">👤</div>
+        <h3 class="font-bold text-xl mb-2">Step 1: Create Your Profile</h3>
+        <p>Sign up and upload your profile picture to personalize your experience.</p>
+      </div>
+      <div class="bg-white p-6 shadow-lg rounded-lg">
+        <div class="text-4xl mb-2">📁</div>
+        <h3 class="font-bold text-xl mb-2">Step 2: Upload & Encrypt</h3>
+        <p>Upload files which are instantly secured using AES for data and RSA for keys.</p>
+      </div>
+      <div class="bg-white p-6 shadow-lg rounded-lg">
+        <div class="text-4xl mb-2">🔗</div>
+        <h3 class="font-bold text-xl mb-2">Step 3: Share with Control</h3>
+        <p>Share encrypted links and optionally set expiration or copy the link with one click.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
